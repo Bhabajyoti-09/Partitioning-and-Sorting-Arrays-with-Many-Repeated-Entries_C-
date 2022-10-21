@@ -1,0 +1,36 @@
+void quickSort(vector<int> &arr, int low, int high)
+{
+	
+	if (low >= high)
+	{
+		return;
+	}
+
+	int pivot = arr[high];
+
+	int small = low, j = low;
+
+	
+	while (small < high)
+	{
+		if (arr[small] <= pivot)
+		{
+			swap(arr[small], arr[j]);
+			j++;
+		}
+		small++;
+	}
+
+	swap(arr[high], arr[j]);
+
+	quickSort(arr, low, j - 1);
+
+	quickSort(arr, j + 1, high);
+}
+
+vector<int> sortArray(vector<int> &arr)
+{
+	quickSort(arr, 0, arr.size() - 1);
+
+	return arr;
+}
